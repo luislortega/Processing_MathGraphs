@@ -10,7 +10,7 @@
 
 **To do before evaluation:**
 - [x] Show multiple points with mouse clicking.
-- [ ] Show lines
+- [x] Show lines
 - [ ] Conect vertex and edges
 - [ ] Make the algorithm to show a Graph with a simple array of information
 - [ ] Make the graph dynamic
