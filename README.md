@@ -11,7 +11,7 @@
 **To do before evaluation:**
 - [x] Show multiple points with mouse clicking.
 - [x] Show lines
-- [ ] Conect vertex and edges
+- [x] Conect vertex and edges
 - [ ] Make the algorithm to show a Graph with a simple array of information
 - [ ] Make the graph dynamic
 
@@ -30,7 +30,7 @@ Explain the representations and ¿What represent a vertex? ¿What represent an e
 - [ ] Use Processing 3.0
 - [ ] The program should allow to print a list with the nodes in pre order, in order and post order.
 - [ ] The program must keep an account of the total number of nodes, leaves and height of the tree.
-- [ ]The program must allow the location of an X node through a search strategy and
+- [ ] The program must allow the location of an X node through a search strategy and
 print the path from the root to the node.
 
 **Deliverables:**
