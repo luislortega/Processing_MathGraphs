@@ -9,8 +9,7 @@
 - Fernanda Madera
 
 **To do before evaluation:**
-- [ ] Show canvas and make it responsive.
-- [ ] Show multiple points
+- [x] Show multiple points with mouse clicking.
 - [ ] Show lines
 - [ ] Conect vertex and edges
 - [ ] Make the algorithm to show a Graph with a simple array of information
