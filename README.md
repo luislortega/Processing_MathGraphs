@@ -12,16 +12,16 @@
 - [x] Show multiple points with mouse clicking.
 - [x] Show lines
 - [x] Conect vertex and edges
-- [ ] Make the algorithm to show a Graph with a simple array of information
+- [x] Make the algorithm to show a Graph with a simple array of information
 - [ ] Make the graph dynamic
 
 **Evaluation:**
 1) Investigation of real life problems that can be represent with a Graph. 
 Explain the representations and ¿What represent a vertex? ¿What represent an edge? and graph type
 
-- [ ] Use Processing 3.0
+- [x] Use Processing 3.0
 - [ ] Show the graph available to add and delete edges
-- [ ] The graph need be represent by a matrix with a commentary "Matriz que representa al grafo"
+- [x] The graph need be represent by a matrix with a commentary "Matriz que representa al grafo"
 - [ ] The program should include the implementation of the algorithms related to the following topics: graph isomorphism, find routes and circuits, shortest route, evaluate graphs planes, graph coloring problem
 
 2) Investigation of real life problems that can be represent with a Node Three.
