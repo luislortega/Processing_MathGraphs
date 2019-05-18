@@ -35,7 +35,7 @@ print the path from the root to the node.
 
 **Deliverables:**
 
-- [ ] A report describing the problem and how the graphs or trees were used to give a solution. It must be explained what algorithms were chosen and programmed according to the Real life problem.
+- [x] A report describing the problem and how the graphs or trees were used to give a solution. It must be explained what algorithms were chosen and programmed according to the Real life problem.
 - [ ] A table with the name of each participant and the tasks performed in the project.
 - [ ] The source code of the graph example and the tree one.
 - [ ] A link to a video on the internet where the team presents its project and it is clearly seen the execution of its programs with all the requested characteristics
