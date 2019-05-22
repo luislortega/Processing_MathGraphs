@@ -2,6 +2,7 @@ import java.util.*;
 
 Boolean nombre_editable = false;
 String nombre = "";
+String mensaje_inicial = "Bienvenido. Materia: Matematicas discretas";
 Pueblos pueblo;
 Map<Pueblos, String> map_pueblos = new HashMap<Pueblos, String>();
 
@@ -12,24 +13,28 @@ void setup() {
 }
 
 void draw(){
-  // Information in the upper screen
-  fill(0);    // black rectangle = background for information
+  fill(0);  
   noStroke();
   rect(0, 0, width, 50);
-  fill(255);  // Text
+  fill(255);
   text ("Mouse: " + mouseX + ", " + mouseY, width-100, 30);
-  text ("Con click derecho agregas un nuevo nodo, luego escribe su nombre y escribe enter. ", 10, 30);
-  // -------------- 
+  text (mensaje_inicial, 10, 30);
 }
 
 void mouseClicked()
 {
-  nombre_editable = false;
-  nombre = " ";
-  pueblo = new Pueblos(mouseX, mouseY);
-  map_pueblos.put(pueblo, pueblo.nombre);
-  pueblo.display();
-  nombre_editable = true;
+  if (mouseButton == LEFT){
+    nombre_editable = false;
+    nombre = " ";
+    mensaje_inicial = "Escribe el nombre y luego presiona ENTER";
+    pueblo = new Pueblos(mouseX, mouseY);
+    map_pueblos.put(pueblo, pueblo.nombre);
+    pueblo.display();
+    nombre_editable = true;
+  }else{
+    //Reviso cual esta mas cercano al punto
+    
+  }
 }
 
 void keyPressed() {
@@ -40,6 +45,7 @@ void keyPressed() {
       pueblo.display();
     }
   }else{
+    mensaje_inicial = "Bienvenido. Materia: Matematicas discretas";
     nombre_editable = false;
     nombre = " ";
   } 
@@ -66,7 +72,8 @@ class Pueblos {
     // Display the point
     stroke(255);
     strokeWeight(20);
-    point(xAxis, yAxis);
+    ellipse(xAxis, yAxis, 10, 10);
+
     //Display the name
     fill(0, 102, 153);
     text(nombre, xAxis-25, yAxis);
