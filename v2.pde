@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.Math; 
 
 Boolean nombre_editable = false;
 String nombre = "";
@@ -34,7 +35,29 @@ void mouseClicked()
   }else{
     //Reviso cual esta mas cercano al punto
     
+    double distancia_minima = 5000;
+    String identificador = "";
+    
+    Iterator<Pueblos> iterator_pueblos = map_pueblos.keySet().iterator();
+    
+    while(iterator_pueblos.hasNext()){
+      
+        Pueblos pueblo = iterator_pueblos.next();
+        double distancia = calculateDistance(pueblo);
+        
+        println("Distancia de "+pueblo.nombre+" es:"+distancia);
+        
+        if(distancia < distancia_minima){
+          distancia_minima = distancia;
+          identificador = pueblo.nombre;
+        }
+    }
+    println("el menor es:"+identificador);
   }
+}
+
+double calculateDistance(Pueblos pueblo){
+  return Math.sqrt( Math.pow( (mouseX-pueblo.xAxis), 2) + Math.pow( (mouseY-pueblo.yAxis) , 2) );
 }
 
 void keyPressed() {
@@ -55,6 +78,7 @@ class Pueblos {
   String nombre = " ";
   int xAxis;
   int yAxis;
+  int[][] connections;
   
   // Contructor
   Pueblos(int xAxisC, int yAxisC) {
