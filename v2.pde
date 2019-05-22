@@ -4,7 +4,7 @@ import java.lang.Math;
 Boolean nombre_editable = false;
 Boolean conectando_vertices = false;
 String nombre = "";
-String mensaje_inicial = "Bienvenido. Materia: Matematicas discretas ";
+String mensaje_inicial = "Bienvenido. Materia: Matematicas discretas ALERTA: AL CREAR UN NODO DALE UN NOMBRE DIFERENTE.";
 Pueblos pueblo;
 Map<Pueblos, String> map_pueblos = new HashMap<Pueblos, String>();
 
@@ -42,6 +42,7 @@ void mouseClicked()
     
     Iterator<Pueblos> iterator_pueblos = map_pueblos.keySet().iterator();
     
+    /* detector de distancia */
     while(iterator_pueblos.hasNext()){      
         pueblo = iterator_pueblos.next();
         double distancia = calculateDistance(pueblo);        
@@ -51,56 +52,14 @@ void mouseClicked()
           identificador = pueblo.nombre;
         }
     }
+    /* conexion */
     iterator_pueblos = map_pueblos.keySet().iterator();
     while(iterator_pueblos.hasNext()){      
         pueblo = iterator_pueblos.next();
         if(pueblo.nombre == identificador){
           pueblo.changeColor();
-
-          if(conectando_vertices == true){
-            int[] conection1 = new int[2]; int[] conection2 = new int[2];
-            Boolean change = true;
-            Pueblos pueblo_interior;
-            
-            iterator_pueblos = map_pueblos.keySet().iterator();
-            
-            while(iterator_pueblos.hasNext()){
-              pueblo_interior = iterator_pueblos.next();
-              if(pueblo_interior.stroke_color == 150 && change){
-                change = false;
-                conection1[0] = pueblo_interior.xAxis;
-                conection1[1] = pueblo_interior.yAxis;
-              }else{
-                conection2[0] = pueblo_interior.xAxis;
-                conection2[1] = pueblo_interior.yAxis;
-              }
-            }
-            /*
-            line(conection1[0],conection1[1],conection2[0],conection2[1]);
-            
-            iterator_pueblos = map_pueblos.keySet().iterator();
-            
-            while(iterator_pueblos.hasNext()){
-              pueblo_interior = iterator_pueblos.next();
-              if(pueblo_interior.stroke_color == 150 && change){
-                change = false;
-                conection1[0] = pueblo_interior.xAxis;
-                conection1[1] = pueblo_interior.yAxis;
-              }else{
-                conection2[0] = pueblo_interior.xAxis;
-                conection2[1] = pueblo_interior.yAxis;
-              }
-            }*/
-            
-          }
-          
-          if(conectando_vertices){
-            conectando_vertices = false;
-          }else{
-            conectando_vertices = true;
-          }
         }
-    }
+    } 
   }
 }
 
@@ -110,10 +69,32 @@ double calculateDistance(Pueblos pueblo){
 
 void keyPressed() {
   if (key != ENTER){
+    
     if(nombre_editable){
       nombre += key;
       pueblo.nombre = nombre;
       pueblo.display();
+    }
+    
+    if(key == '1'){
+      println(" BUSCANDO ");
+      Iterator<Pueblos> iterator_pueblos = map_pueblos.keySet().iterator();
+      
+      ArrayList<Pueblos> pueblitos = new ArrayList<Pueblos>();
+      
+      /* detector de distancia */
+      while(iterator_pueblos.hasNext()){      
+        Pueblos pueblo = iterator_pueblos.next();
+        if (pueblo.stroke_color != 255){
+          pueblitos.add(pueblo);
+          println("agregado: "+pueblo.nombre+" con color: "+ pueblo.stroke_color);
+        }
+      }
+      println("encontre "+pueblitos.get(0).xAxis+","+pueblitos.get(0).yAxis+","+pueblitos.get(1).xAxis+","+pueblitos.get(1).yAxis);
+      stroke(0);
+      strokeWeight(4);
+      line(pueblitos.get(0).xAxis, pueblitos.get(0).yAxis, pueblitos.get(1).xAxis, pueblitos.get(1).yAxis);
+      
     }
   }else{
     mensaje_inicial = "Bienvenido. Materia: Matematicas discretas";
@@ -127,6 +108,7 @@ class Pueblos {
   int xAxis;
   int yAxis;
   int stroke_color = 255;
+  int nodes = 0;
   int[][] connections = new int[10][10];
   
   // Contructor
