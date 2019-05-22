@@ -2,8 +2,9 @@ import java.util.*;
 import java.lang.Math; 
 
 Boolean nombre_editable = false;
+Boolean conectando_vertices = false;
 String nombre = "";
-String mensaje_inicial = "Bienvenido. Materia: Matematicas discretas";
+String mensaje_inicial = "Bienvenido. Materia: Matematicas discretas ";
 Pueblos pueblo;
 Map<Pueblos, String> map_pueblos = new HashMap<Pueblos, String>();
 
@@ -37,22 +38,69 @@ void mouseClicked()
     
     double distancia_minima = 5000;
     String identificador = "";
+    Pueblos pueblo;
     
     Iterator<Pueblos> iterator_pueblos = map_pueblos.keySet().iterator();
     
-    while(iterator_pueblos.hasNext()){
-      
-        Pueblos pueblo = iterator_pueblos.next();
-        double distancia = calculateDistance(pueblo);
-        
+    while(iterator_pueblos.hasNext()){      
+        pueblo = iterator_pueblos.next();
+        double distancia = calculateDistance(pueblo);        
         println("Distancia de "+pueblo.nombre+" es:"+distancia);
-        
         if(distancia < distancia_minima){
           distancia_minima = distancia;
           identificador = pueblo.nombre;
         }
     }
-    println("el menor es:"+identificador);
+    iterator_pueblos = map_pueblos.keySet().iterator();
+    while(iterator_pueblos.hasNext()){      
+        pueblo = iterator_pueblos.next();
+        if(pueblo.nombre == identificador){
+          pueblo.changeColor();
+
+          if(conectando_vertices == true){
+            int[] conection1 = new int[2]; int[] conection2 = new int[2];
+            Boolean change = true;
+            Pueblos pueblo_interior;
+            
+            iterator_pueblos = map_pueblos.keySet().iterator();
+            
+            while(iterator_pueblos.hasNext()){
+              pueblo_interior = iterator_pueblos.next();
+              if(pueblo_interior.stroke_color == 150 && change){
+                change = false;
+                conection1[0] = pueblo_interior.xAxis;
+                conection1[1] = pueblo_interior.yAxis;
+              }else{
+                conection2[0] = pueblo_interior.xAxis;
+                conection2[1] = pueblo_interior.yAxis;
+              }
+            }
+            /*
+            line(conection1[0],conection1[1],conection2[0],conection2[1]);
+            
+            iterator_pueblos = map_pueblos.keySet().iterator();
+            
+            while(iterator_pueblos.hasNext()){
+              pueblo_interior = iterator_pueblos.next();
+              if(pueblo_interior.stroke_color == 150 && change){
+                change = false;
+                conection1[0] = pueblo_interior.xAxis;
+                conection1[1] = pueblo_interior.yAxis;
+              }else{
+                conection2[0] = pueblo_interior.xAxis;
+                conection2[1] = pueblo_interior.yAxis;
+              }
+            }*/
+            
+          }
+          
+          if(conectando_vertices){
+            conectando_vertices = false;
+          }else{
+            conectando_vertices = true;
+          }
+        }
+    }
   }
 }
 
@@ -78,7 +126,8 @@ class Pueblos {
   String nombre = " ";
   int xAxis;
   int yAxis;
-  int[][] connections;
+  int stroke_color = 255;
+  int[][] connections = new int[10][10];
   
   // Contructor
   Pueblos(int xAxisC, int yAxisC) {
@@ -91,12 +140,21 @@ class Pueblos {
 
   }
   
+  void changeColor(){
+    if(stroke_color == 255){
+      stroke_color = 150;
+    }else{
+      stroke_color = 255;
+    }
+    display();
+  }
+  
   // Custom method for drawing the object
   void display() {
     // Display the point
-    stroke(255);
+    stroke(stroke_color);
     strokeWeight(20);
-    ellipse(xAxis, yAxis, 10,  10);
+    ellipse(xAxis, yAxis, 10, 10);
 
     //Display the name
     fill(0, 102, 153);
