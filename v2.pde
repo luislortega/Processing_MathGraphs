@@ -96,7 +96,7 @@ class Pueblos {
     // Display the point
     stroke(255);
     strokeWeight(20);
-    ellipse(xAxis, yAxis, 10, 10);
+    ellipse(xAxis, yAxis, 10,  10);
 
     //Display the name
     fill(0, 102, 153);
