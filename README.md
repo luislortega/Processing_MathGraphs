@@ -20,7 +20,7 @@
 Explain the representations and ¿What represent a vertex? ¿What represent an edge? and graph type
 
 - [x] Use Processing 3.0
-- [ ] Show the graph available to add and delete edges
+- [x] Show the graph available to add and delete edges
 - [x] The graph need be represent by a matrix with a commentary "Matriz que representa al grafo"
 - [x] The program should include the implementation of the algorithms related to the following topics: graph isomorphism, find routes and circuits, shortest route, evaluate graphs planes, graph coloring problem
 
@@ -35,7 +35,12 @@ print the path from the root to the node.
 
 **Deliverables:**
 
-- [ ] A report describing the problem and how the graphs or trees were used to give a solution. It must be explained what algorithms were chosen and programmed according to the Real life problem.
-- [ ] A table with the name of each participant and the tasks performed in the project.
-- [ ] The source code of the graph example and the tree one.
-- [ ] A link to a video on the internet where the team presents its project and it is clearly seen the execution of its programs with all the requested characteristics
+- [x] A report describing the problem and how the graphs or trees were used to give a solution. It must be explained what algorithms were chosen and programmed according to the Real life problem.
+- [x] A table with the name of each participant and the tasks performed in the project.
+- [x] The source code of the graph example and the tree one.
+- [x] A link to a video on the internet where the team presents its project and it is clearly seen the execution of its programs with all the requested characteristics
+
+**Resources:**
+- Dikkstra algorithm explication.
+
+https://www.youtube.com/watch?v=4I7W5WUQQQI
